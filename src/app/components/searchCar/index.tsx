@@ -17,25 +17,28 @@ export function SearchCar({setCars}: SearchCarProps){
 
     async function handleSearch(input: string){
         try{
-            const response = await api.get("/carname", {
-            params: {
-                car_name: input,
-            },
-        });
+            const response = await fetch(
+            `${process.env.NEXT_PUBLIC_API}/carname?car_name=${encodeURIComponent(input)}`
+        );
 
-            setCars(response.data);
+            if (!response.ok) {
+                throw new Error("Request failed");
+            }
+
+            const data = await response.json();
+
+            setCars(data);
 
             setInput("");
 
-            if(response.data.length <= 0){
+            if(data.length <= 0){
                 toast.warning("No cars found!");
             }
-
-            
         }
         catch(err){
             console.log("No cars found");
             setCars([]);
+            toast.error("Failed to search for cars.");
         }
     }
 

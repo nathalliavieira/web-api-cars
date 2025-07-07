@@ -27,7 +27,7 @@ export default function Login(){
             setLoading(true);
 
             try{
-                const response = await fetch("https://api-web-cars.vercel.app/session", {
+                const response = await fetch(`${process.env.NEXT_PUBLIC_API}/session`, {
                     method: "POST",
                     body: JSON.stringify({ email, password }),
                     headers: {
