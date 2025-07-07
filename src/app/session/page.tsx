@@ -28,6 +28,7 @@ export default function Login(){
 
             //1- verificamos se realmente tem token
             if(!response.data.token){
+                toast.error("Email or password incorrect.");
                 return;
             }
 
@@ -43,6 +44,7 @@ export default function Login(){
             }) //entre "" é o nome que queremos salvar, e depois vem O QUE queremos salvar. 
 
         }catch(err){
+            toast.error("Email or password incorrect.");
             console.log(err);
             return;
         }
