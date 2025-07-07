@@ -6,18 +6,16 @@ import SwiperImage from "@/app/dashboard/car/components/swiperImages";
 import { FaWhatsapp } from "react-icons/fa";
 import styles from "./styles.module.scss";
 
-type Props = {
-    params: {
-        car_id: string;
-    };
-};
+interface CarDetailPageProps {
+    params: { car_id: string };
+}
 
-export default async function CarDetailPage({ params }: Props){ //Quando usamos rotas dinâmicas ([car_id]) no Next.js App Router, os parâmetros da URL são passados dentro de um objeto chamado params
+export default async function CarDetailPage({ params }: { params: { car_id: string } }) { //Quando usamos rotas dinâmicas ([car_id]) no Next.js App Router, os parâmetros da URL são passados dentro de um objeto chamado params
     const { car_id } = params;
 
-    const response = await api.get(`/car/${car_id}`);
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API}/car/${car_id}`);
 
-    const car: CarsSalesProps = response.data; //Aqui que tipamos o car com a tipagem que haviamos criado em outro arquivo
+    const car: CarsSalesProps = await response.json(); //Aqui que tipamos o car com a tipagem que haviamos criado em outro arquivo
 
     return(
         <>
