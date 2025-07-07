@@ -8,7 +8,7 @@ export async function handleLogin(formData: FormData){
     const email = formData.get("email");
     const password = formData.get("password");
 
-    if(email === "" || password === ""){
+    if(!email || !password || email === "" || password === ""){
         redirect("/login?error=missing-fields");
     }
 
@@ -20,7 +20,7 @@ export async function handleLogin(formData: FormData){
 
         //1- verificamos se realmente tem token
         if(!response.data.token){
-            redirect("/login?error=missing-fields");
+            redirect("/login?error=invalid-credentials");
         }
 
         //2- Iremos guardar o token em um cookie. Para isso iremos importar a biblioteca cookies.
