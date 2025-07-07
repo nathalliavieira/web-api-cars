@@ -1,0 +1,53 @@
+.container{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 64px;
+    background-color: var(--white);
+    margin-bottom: 16px;
+    border-bottom: 2px solid var(--gray);
+
+    header{
+        display: flex;
+        width: 100%;
+        max-width: 1280px;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 16px;
+        margin: 0 auto;
+    }
+}
+
+.login{
+    border: 2px solid var(--gray);
+    border-radius: 100%;
+    padding: 4px;
+}
+
+.buttonsToken{
+    display: flex;
+    width: 100%;
+    max-width: 200px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    button{
+        border: 2px solid var(--gray);
+        border-radius: 100%;
+        padding: 4px;
+    }
+}
+
+.linkDashboard{
+    background-color: var(--red);
+    height: 40px;
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    border-radius: 8px;
+    color: var(--white);
+    font-weight: 500;
+}

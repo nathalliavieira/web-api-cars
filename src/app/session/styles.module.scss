@@ -1,0 +1,44 @@
+.container{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 16px;
+}
+
+.pageHome{
+    margin-bottom: 24px;
+    max-width: 384px;
+
+    img{
+        width: 100%;
+    }
+}
+
+.form{
+    background-color: var(--white);
+    max-width: 576px;
+    width: 100%;
+    border-radius: 8px;
+    padding: 16px;
+
+    input{
+        width: 100%;
+        border: 2px solid var(--gray);
+        border-radius: 6px;
+        height: 44px;
+        padding: 0 8px;
+        margin-bottom: 12px;
+    }
+
+    button{
+        background-color: var(--black-900);
+        width: 100%;
+        border-radius: 6px;
+        color: var(--white);
+        height: 40px;
+        font-weight: 500;
+    }
+}
