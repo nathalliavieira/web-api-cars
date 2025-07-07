@@ -6,33 +6,57 @@ import logoImg from "../../../public/logo.png";
 import Image from "next/image";
 
 import { useState } from "react";
-import { useSearchParams } from "next/navigation";
 import { toast } from "sonner";
-import { handleLogin } from "./actions";
+import { setCookie } from "cookies-next";
 
 export default function Login(){
     const [loading, setLoading] = useState(false);
 
     async function onSubmit(event: React.FormEvent<HTMLFormElement>) {
-    event.preventDefault();
+        event.preventDefault();
 
-    const formData = new FormData(event.currentTarget);
+            const formData = new FormData(event.currentTarget);
+            const email = formData.get("email");
+            const password = formData.get("password");
 
-    setLoading(true);
+            if(!email || !password){
+                toast.warning("Fill in all fields.");
+                return;
+            }
 
-    const result = await handleLogin(formData);
+            setLoading(true);
 
-    setLoading(false);
+            try{
+                const response = await fetch("https://api-web-cars.vercel.app/session", {
+                    method: "POST",
+                    body: JSON.stringify({ email, password }),
+                    headers: {
+                    "Content-Type": "application/json",
+                    },
+                });
 
-    if (result?.error === "missing-fields") {
-        toast.warning("Fill in all fields.");
-    } else if (result?.error === "invalid-credentials") {
-        toast.error("Email or password incorrect.");
-    } else if (result?.success) {
-      // login ok, redireciona na mão
-        window.location.href = "/dashboard";
+                const data = await response.json();
+
+                if (!response.ok ||!data.token) {
+                    toast.error(data.message || "Email or password incorrect.");
+                    return;
+                }
+        
+                // Salva o cookie com cookies-next
+                setCookie("token", data.token, {
+                    maxAge: 60 * 60 * 24 * 30,
+                    path: "/",
+                });
+
+                toast.success("Login successful!");
+                window.location.href = "/dashboard";
+            }catch(err){
+                console.log(err);
+                toast.error("An unexpected error occurred.");
+            }finally {
+            setLoading(false);
+            }
     }
-}
 
     return(
         <div className={styles.container}>
