@@ -1,4 +1,3 @@
-import { api } from "@/services/api";
 import { CarsSalesProps } from "@/lib/carsSale.type";
 import { Header } from "@/app/components/header";
 
@@ -6,16 +5,25 @@ import SwiperImage from "@/app/dashboard/car/components/swiperImages";
 import { FaWhatsapp } from "react-icons/fa";
 import styles from "./styles.module.scss";
 
-interface CarDetailPageProps {
-    params: { car_id: string };
+// Use fetch ao invés de axios para compatibilidade com Edge Runtime
+async function getCarData(car_id: string): Promise<CarsSalesProps> {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API}/car/${car_id}`, {
+        // Isso ajuda com cache/revalidação em edge/server
+        next: { revalidate: 60 },
+});
+
+    if (!res.ok) throw new Error("Failed to fetch car data");
+    return res.json();
 }
 
-export default async function CarDetailPage({ params }: { params: { car_id: string } }) { //Quando usamos rotas dinâmicas ([car_id]) no Next.js App Router, os parâmetros da URL são passados dentro de um objeto chamado params
-    const { car_id } = params;
+type PageProps = {
+    params: {
+        car_id: string;
+    };
+};
 
-    const response = await fetch(`${process.env.NEXT_PUBLIC_API}/car/${car_id}`);
-
-    const car: CarsSalesProps = await response.json(); //Aqui que tipamos o car com a tipagem que haviamos criado em outro arquivo
+export default async function CarDetailPage({ params }: PageProps) { //Quando usamos rotas dinâmicas ([car_id]) no Next.js App Router, os parâmetros da URL são passados dentro de um objeto chamado params
+    const car = await getCarData(params.car_id);
 
     return(
         <>
