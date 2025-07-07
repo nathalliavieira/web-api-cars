@@ -1,9 +1,6 @@
 import { HeaderDashboard } from "../components/headerDashboard";
 import { CarsSalesUser } from "./car/components/carsSalesUser";
 
-import { api } from "@/services/api";
-export const runtime = 'nodejs';
-export const dynamic = 'force-dynamic';
 import { getCookieServer } from "@/lib/cookieServer";
 
 import { CarsSalesProps } from "@/lib/carsSale.type";
@@ -12,13 +9,20 @@ async function getCars(): Promise<CarsSalesProps[] | []>{
     try{
         const token = await getCookieServer();
 
-        const response = await api.get("/cars/detail", {
-            headers:{
-                Authorization: `Bearer ${token}`
-            }
-        })
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API}/cars/detail`, {
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
+            cache: "no-store", // importante para não cachear dados dinâmicos
+        });
 
-        return response.data || [];
+        if (!res.ok) {
+            console.error(`Erro ao buscar carros: ${res.status}`);
+            return [];
+        }
+
+        const data = await res.json();
+        return data || [];
 
     }catch(err){
         console.log(err);

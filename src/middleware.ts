@@ -3,7 +3,6 @@ import { NextRequest, NextResponse } from "next/server";
 import { getCookieServer } from "./lib/cookieServer";
 
 import { api } from "./services/api";
-export const runtime = 'nodejs';
 
 export async function middleware(req: NextRequest){
     //1- Coletamos a rota

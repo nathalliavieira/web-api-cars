@@ -4,8 +4,6 @@ import Image from "next/image";
 import logoImg from "../../../public/logo.png";
 
 import { api } from "@/services/api";
-export const runtime = 'nodejs';
-export const dynamic = 'force-dynamic';
 import { redirect } from "next/navigation";
 import { toast } from "sonner";
 

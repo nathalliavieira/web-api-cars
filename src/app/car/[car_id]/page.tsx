@@ -1,19 +1,26 @@
-export const runtime = 'nodejs';
-export const dynamic = 'force-dynamic';
-
 import { CarsSalesProps } from "@/lib/carsSale.type";
 import { Header } from "@/app/components/header";
 
 import SwiperImage from "@/app/dashboard/car/components/swiperImages";
 import { FaWhatsapp } from "react-icons/fa";
 import styles from "./styles.module.scss";
-import { api } from "@/services/api";
 
-// Use fetch ao invés de axios para compatibilidade com Edge Runtime
 async function getCarData(car_id: string): Promise<CarsSalesProps> {
-    const res = await api.get(`/car/${car_id}`);
-    return res.data;
-};
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API}/car/${car_id}`, {
+        // Essas opções garantem que não haja cache em SSR
+        next: { revalidate: 0 },
+        // Se quiser garantir que funcione mesmo com headers especiais, adicione:
+        headers: {
+            'Content-Type': 'application/json'
+        },
+    });
+
+    if (!res.ok) {
+        throw new Error(`Erro ao buscar carro: ${res.statusText}`);
+    }
+
+    return res.json();
+}
 
 type CarDetailPageProps  = {
     params: {
