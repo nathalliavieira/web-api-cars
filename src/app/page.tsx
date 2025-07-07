@@ -6,7 +6,6 @@ import Image from "next/image";
 import { Header } from "./components/header";
 
 import { api } from "@/services/api";
-export const runtime = 'nodejs';
 import { CarsSalesProps } from "@/lib/carsSale.type";
 
 import { SearchCar } from "./components/searchCar";

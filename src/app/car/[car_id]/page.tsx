@@ -1,4 +1,5 @@
 export const runtime = 'nodejs';
+export const dynamic = 'force-dynamic';
 
 import { CarsSalesProps } from "@/lib/carsSale.type";
 import { Header } from "@/app/components/header";

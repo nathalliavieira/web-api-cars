@@ -3,6 +3,7 @@ import { CarsSalesUser } from "./car/components/carsSalesUser";
 
 import { api } from "@/services/api";
 export const runtime = 'nodejs';
+export const dynamic = 'force-dynamic';
 import { getCookieServer } from "@/lib/cookieServer";
 
 import { CarsSalesProps } from "@/lib/carsSale.type";

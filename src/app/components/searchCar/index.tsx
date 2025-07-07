@@ -4,7 +4,6 @@ import { useState } from "react";
 import styles from "./styles.module.scss";
 
 import { api } from "@/services/api";
-export const runtime = 'nodejs';
 import { CarsSalesProps } from "@/lib/carsSale.type";
 
 import { toast } from "sonner";

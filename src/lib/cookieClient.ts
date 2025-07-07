@@ -1,7 +1,6 @@
 //Arquivo para quando queremos buscar o cookie usando um componente client
 
 import { deleteCookie, getCookie } from "cookies-next";
-export const runtime = 'nodejs';
 
 export function getCookieClient(): string | null{
     const token = getCookie("token");

@@ -1,5 +1,4 @@
 import axios from "axios";
-export const runtime = 'nodejs';
 
 export const api = axios.create({
     baseURL: process.env.NEXT_PUBLIC_API

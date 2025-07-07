@@ -8,7 +8,6 @@ import Image from "next/image";
 import { CarsSalesProps } from "@/lib/carsSale.type";
 
 import { api } from "@/services/api";
-export const runtime = 'nodejs';
 import { getCookieClient } from "@/lib/cookieClient";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";

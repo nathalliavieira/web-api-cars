@@ -5,6 +5,7 @@ import Image from "next/image";
 
 import { api } from "@/services/api";
 export const runtime = 'nodejs';
+export const dynamic = 'force-dynamic';
 import { redirect } from "next/navigation";
 import { cookies } from "next/headers";
 import { toast } from "sonner";
