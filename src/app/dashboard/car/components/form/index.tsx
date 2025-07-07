@@ -8,6 +8,7 @@ import { useState } from "react";
 
 import { getCookieClient } from "@/lib/cookieClient";
 import { api } from "@/services/api";
+export const runtime = 'nodejs';
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 

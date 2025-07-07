@@ -4,6 +4,7 @@ import logoImg from "../../../public/logo.png";
 import Image from "next/image";
 
 import { api } from "@/services/api";
+export const runtime = 'nodejs';
 import { redirect } from "next/navigation";
 import { cookies } from "next/headers";
 import { toast } from "sonner";
