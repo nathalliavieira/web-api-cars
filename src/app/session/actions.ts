@@ -1,5 +1,4 @@
 import { api } from "@/services/api";
-import { redirect } from "next/navigation";
 import { cookies } from "next/headers";
 
 export async function handleLogin(formData: FormData){
@@ -8,8 +7,8 @@ export async function handleLogin(formData: FormData){
     const email = formData.get("email");
     const password = formData.get("password");
 
-    if(!email || !password || email === "" || password === ""){
-        redirect("/login?error=missing-fields");
+    if(!email || !password){
+        return { error: "missing-fields" };
     }
 
     try{
@@ -20,7 +19,7 @@ export async function handleLogin(formData: FormData){
 
         //1- verificamos se realmente tem token
         if(!response.data.token){
-            redirect("/login?error=invalid-credentials");
+            return { error: "invalid-credentials" };
         }
 
         //2- Iremos guardar o token em um cookie. Para isso iremos importar a biblioteca cookies.
@@ -34,9 +33,9 @@ export async function handleLogin(formData: FormData){
             secure: process.env.NODE_ENV === "production"
         }) //entre "" é o nome que queremos salvar, e depois vem O QUE queremos salvar. 
 
-        redirect("/dashboard");
+        return { success: true };
     }catch(err){
         console.log(err);
-        redirect("/login?error=invalid-credentials");
+        return { error: "invalid-credentials" };
     }
 }
