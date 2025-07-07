@@ -16,13 +16,13 @@ async function getCarData(car_id: string): Promise<CarsSalesProps> {
     return res.json();
 }
 
-type PageProps = {
+type CarPageProps = {
     params: {
         car_id: string;
     };
 };
 
-export default async function CarDetailPage({ params }: PageProps) { //Quando usamos rotas dinâmicas ([car_id]) no Next.js App Router, os parâmetros da URL são passados dentro de um objeto chamado params
+export default async function CarDetailPage({ params }: CarPageProps) { //Quando usamos rotas dinâmicas ([car_id]) no Next.js App Router, os parâmetros da URL são passados dentro de um objeto chamado params
     const car = await getCarData(params.car_id);
 
     return(
