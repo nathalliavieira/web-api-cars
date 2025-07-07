@@ -5,7 +5,6 @@ import logoImg from "../../../public/logo.png";
 
 import { api } from "@/services/api";
 import { redirect } from "next/navigation";
-import { toast } from "sonner";
 
 export default function SingUp(){
     async function handleRegister(formData: FormData){ //Como estamos dentro de uma action, o formulario nos envia uma propriedade chamada de formData e é do tipo FormData
@@ -22,7 +21,6 @@ export default function SingUp(){
 
         //testamos se todos os campos foram realmente preenchidos:
         if(name === "" || email === "" || password === ""){
-            toast.warning("Fill in all fields.");
             return;
         }
 
