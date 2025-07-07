@@ -6,9 +6,11 @@ import SwiperImage from "@/app/dashboard/car/components/swiperImages";
 import { FaWhatsapp } from "react-icons/fa";
 import styles from "./styles.module.scss";
 
-interface Props {
-    params: {car_id: string};
-}
+type Props = {
+    params: {
+        car_id: string;
+    };
+};
 
 export default async function CarDetailPage({ params }: Props){ //Quando usamos rotas dinâmicas ([car_id]) no Next.js App Router, os parâmetros da URL são passados dentro de um objeto chamado params
     const { car_id } = params;
