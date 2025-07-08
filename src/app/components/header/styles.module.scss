@@ -20,6 +20,12 @@
     }
 }
 
+.logoImage{
+    position: relative;
+    width: 175px;
+    height: 44px;
+}
+
 .login{
     border: 2px solid var(--gray);
     border-radius: 100%;
@@ -41,6 +47,14 @@
     }
 }
 
+.pcWidth{
+    display: inline;
+}
+
+.mobileWidth{
+    display: none;
+}
+
 .linkDashboard{
     background-color: var(--red);
     height: 40px;
@@ -50,4 +64,44 @@
     border-radius: 8px;
     color: var(--white);
     font-weight: 500;
+}
+
+.fiLogin{
+    color: #000;
+    font-size: 24px;
+}
+
+@media (max-width: 428px) {
+    /* Estilos para iPhones em geral */
+    .logoImage{
+        width: 100px;
+        height: 35px;
+    }
+
+    .buttonsToken{
+        max-width: 130px;
+        gap: 5px;
+    }
+
+    .linkDashboard{
+        max-width: 100px;
+        height: 35px;
+    }
+
+    .pcWidth{
+        display: none;
+    }
+
+    .mobileWidth{
+        display: inline;
+        padding: 0px;
+    }
+
+    .fiLogin{
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 768px) {
+  /* Tablets e celulares maiores */
 }

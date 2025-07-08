@@ -42,21 +42,22 @@ export function Header(){
                 <Link 
                     href="/" 
                     onClick={handleLogoClick}
+                    className={styles.logoImage}
                 >
                 <Image 
                     src={logoImage} 
                     alt="Logo do site" 
-                    width={175} 
-                    height={44}
+                    fill
                 />
                 </Link>
 
                 {isToken && (
                     <div className={styles.buttonsToken}>
                         <Link href="/dashboard" className={styles.linkDashboard}>
-                            Go to dashboard
+                            <span className={styles.pcWidth}>Go to dashboard</span>
+                            <span className={styles.mobileWidth}>Dashboard</span>
                         </Link>
-                        <button onClick={handleLogout}><FiLogIn size={24} color="#000" /></button> 
+                        <button onClick={handleLogout}><FiLogIn className={styles.fiLogin} /></button> 
                         {/* //SE CLICARMOS NO BOTAO ACIMA, IREMOS DELETAR O TOKEN E A PESSOA IRÁ SER REDIRECIONADA PARA A PAGINA HOME */}
                     </div>
                 )}

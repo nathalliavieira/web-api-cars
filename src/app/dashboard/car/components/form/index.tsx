@@ -56,11 +56,6 @@ export function Form(){
             data.append("images", file);
         })
 
-        if (image.length === 0) {
-            toast.warning("Add at least one image.");
-            return;
-        }
-
         if (image.length < 2) {
             toast.warning("Add at least two images.");
             return;
