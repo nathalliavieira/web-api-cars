@@ -44,7 +44,7 @@ export default function Home() {
 
                   <div className={styles.info2}>
                       <span>Year {car.year} | {car.km} km</span> 
-                      <strong> € {car.price}</strong>
+                      <strong>{car.price} €</strong>
                   </div>
 
                   <div className={styles.divLine}></div>

@@ -39,7 +39,7 @@ export default async function CarDetailPage({ params }: CarDetailPageProps ) { /
                 <div className={styles.container}>
                     <div className={styles.info1}>
                         <h1>{car.car_name}</h1>
-                        <h1>€ {car.price}</h1>
+                        <h1>{car.price} €</h1>
                     </div>
 
                     <p>{car.model}</p>

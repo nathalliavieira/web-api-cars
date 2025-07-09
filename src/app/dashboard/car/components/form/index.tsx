@@ -145,41 +145,41 @@ export function Form(){
                 <form onSubmit={handleSubmit}>
                     <div className={styles.infoCar}>
                         <p>Car name</p>
-                        <input type="text" name="name" placeholder="Ex: Onix 1.0" required/>
+                        <input type="text" name="name" placeholder="E.g. Onix 1.0" required/>
                     </div>
 
                     <div className={styles.infoCar}>
                         <p>Car model</p>
-                        <input type="text" name="model" placeholder="Ex: 1.0 Flex Plus Manual" required/>
+                        <input type="text" name="model" placeholder="E.g. 1.0 Flex Plus Manual" required/>
                     </div>
 
                     <div className={styles.infoCar2}>
                         <div>
                             <p>Year</p>
-                            <input type="text" name="year" placeholder="Ex: 2019/2019" required/>
+                            <input type="text" name="year" placeholder="E.g. 2019/2019" required/>
                         </div>
 
                         <div>
                             <p>Km</p>
-                            <input type="text" name="km" placeholder="Ex: 105.000" required/>
+                            <input type="text" name="km" placeholder="E.g. 105.000" required/>
                         </div>
                     </div>
 
                     <div className={styles.infoCar2}>
                         <div>
                             <p>Phone/WhatsApp</p>
-                            <input type="text" name="phone" placeholder="Ex: 123458963" required/>
+                            <input type="text" name="phone" placeholder="E.g. 123458963" required/>
                         </div>
 
                         <div>
                             <p>City</p>
-                            <input type="text" name="city" placeholder="Ex: Madrid" required/>
+                            <input type="text" name="city" placeholder="E.g. Madrid" required/>
                         </div>
                     </div>
 
                     <div className={styles.infoCar}>
-                        <p>Price:</p>
-                        <input type="text" name="price" placeholder="Ex: 69.000" required/>
+                        <p>Price €</p>
+                        <input type="text" name="price" placeholder="E.g. 69.000" required/>
                     </div>
 
                     <div className={styles.infoCar}>
